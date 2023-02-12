@@ -1,0 +1,30 @@
+#+TITLE: Emacs Lisp - Exercism
+#+AUTHOR: 64J0
+#+DATE: [2023-02-11 sáb]
+
+* Description
+
+This repository is used to host my code submissions in the Emacs Lisp track of
+the Exercism platform: [[https://exercism.org/tracks/emacs-lisp][link]].
+
+** About Emacs Lisp
+
++ Copied this text from the Exercism page since I found it very interesting.
+
+#+BEGIN_QUOTE
+Emacs Lisp is the language at the core of Emacs, the iconic text editor that is
+at the beginning of the Free Software movement. Emacs is made of more than a
+million lines of Emacs Lisp, and all the applications that run inside Emacs
+(IDEs for various programming languages, games, planners, etc.) are written in
+Emacs Lisp. User preferences are also lists of Emacs Lisp expressions.
+
+Knowing Emacs Lisp is the first step into Lisp, the second oldest programming
+language still used (just turned 60 in 2018) and also a language that still
+influences so many other programming languages.
+#+END_QUOTE
+
+* My Emacs
+
+If you'd like to know more about Emacs, consider consulting the ~README.org~ of
+the repository with my personal configuration: [[https://github.com/64J0/Emacs-config][link]]. There I list many useful
+references, and give some tips regarding this wonderful tool.
