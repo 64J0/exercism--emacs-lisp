@@ -28,3 +28,13 @@ influences so many other programming languages.
 If you'd like to know more about Emacs, consider consulting the ~README.org~ of
 the repository with my personal configuration: [[https://github.com/64J0/Emacs-config][link]]. There I list many useful
 references, and give some tips regarding this wonderful tool.
+
+** Emacs Lisp Style Guide
+
+#+BEGIN_QUOTE
+This Emacs Lisp style guide recommends best practices so that real-world Emacs
+Lisp programmers can write code that can be maintained by other real-world Emacs
+Lisp programmers.
+
+--- [[https://github.com/bbatsov/emacs-lisp-style-guide][bbatsov/emacs-list-style-guide]]
+#+END_QUOTE
