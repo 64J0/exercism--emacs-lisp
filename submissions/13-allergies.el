@@ -2,23 +2,33 @@
 
 ;;; Commentary:
 
+;; First, thanks `zkry' for mentoring me in this exercise.  My solution is now
+;; way more clean.
+;;
+;; Emacs built in advanced calculator:
+;;
+;; C-x *
+;; https://www.gnu.org/software/emacs/manual/html_node/calc/Radix-Modes.html
+;; Necessary to import `calc-bin'.
+
+;; So the #' is used for quoting functions.  Using ' works just the same.  The
+;; difference is that #' signals to the byte compiler that the symbol will be
+;; used as a function.  #' is shorthand for function and ' is shorthand for
+;; quote.  identity is just a function that returns the argument it was passed
+;; in.  Using this with seq-filter it lets us filter out any element that is
+;; nil.
+
 ;;; Code:
 
 (require 'seq)
+(require 'calc-bin)
 
 (defun int-to-binary-string (i)
   "Convert integer `I' into it's binary representation as string.
 
-Found this function at:
-
-+ https://stackoverflow.com/a/20577329"
-  (let ((res ""))
-    (while (not (= i 0))
-      (setq res (concat (if (= 1 (logand i 1)) "1" "0") res))
-      (setq i (lsh i -1)))
-    (if (string= res "")
-        (setq res "0"))
-    res))
+Thanks to `zkry' for showing it to me in Exercism!"
+  (let ((calc-number-radix 2))
+    (math-format-radix i)))
 
 (defconst allergies-vector
   ["eggs" "peanuts" "shellfish" "strawberries"
@@ -27,29 +37,17 @@ Found this function at:
 
 (defun allergen-list (score)
   "Given a person's allergy `SCORE', determine whether or not they're allergic to a given item, and their full list of allergies."
-  (let ((pos -1)
-        (allergies ()))
-    (seq-reduce
-     (lambda (acc x)
-       (and
-        (setq pos (+ pos 1))
-        (if (= x ?1)
-            (push (aref allergies-vector pos) allergies)
-          allergies)))
-     (substring (reverse (concat "00000000" (int-to-binary-string score))) 0 8)
-     allergies)
-    (reverse allergies)))
+  (seq-filter
+   #'identity
+   (seq-map-indexed
+    (lambda (digit idx)
+      (when (= digit ?1)
+        (aref allergies-vector idx)))
+    (substring (reverse (concat "00000000" (int-to-binary-string score))) 0 8))))
 
 (defun allergic-to-p (score allergen)
   "Check if Allergic to allergen based on `SCORE' and `ALLERGEN'."
-  (let ((allergies (allergen-list score))
-        (present nil))
-    (while (not (equal allergies nil))
-      (and
-       (equal allergen (car allergies))
-       (setq present t))
-      (setq allergies (cdr allergies)))
-    (or present)))
+  (member allergen (allergen-list score)))
 
 (provide 'allergies)
 ;;; 13-allergies.el ends here
