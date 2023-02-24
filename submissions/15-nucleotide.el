@@ -8,7 +8,7 @@
 
 (require 'seq)
 
-(defvar-local nucleotide-alist
+(defconst nucleotide-alist
   '((?A . 0)
     (?C . 0)
     (?G . 0)
