@@ -4,12 +4,13 @@
 
 * Description
 
-This repository is used to host my code submissions in the Emacs Lisp track of
-the Exercism platform: [[https://exercism.org/tracks/emacs-lisp][link]].
+This repository is used to host my code submissions in the [[https://exercism.org/tracks/emacs-lisp][Emacs Lisp track]] of
+the Exercism platform.
 
 ** About Emacs Lisp
 
-+ Copied this text from the Exercism page since I found it very interesting.
+Disclaimer: I copied the text below from the Exercism page since I found it very
+interesting.
 
 #+BEGIN_QUOTE
 Emacs Lisp is the language at the core of Emacs, the iconic text editor that is
